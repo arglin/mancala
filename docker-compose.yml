@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  mancala-db:
+    image: mongo
+    restart: unless-stopped
+    env_file: ./.env
+    ports:
+      - $MONGO_LOCAL_PORT:$MONGO_DOCKER_PORT
+    volumes:
+      - db:/var/lib/mysql
+
+
+  mancala-frontend:
+    build:
+      context: services/mancala-frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./config.json:/usr/share/nginx/html/assets/config.json
+
+    restart: on-failure
+    env_file: ./.env
+    ports:
+      - $FRONTEND_LOCAL_PORT:$FRONTEND_DOCKER_PORT
+
+  mancala-backend:
+    depends_on:
+      - mancala-db
+    build:
+      context: services/mancala-backend
+      dockerfile: Dockerfile
+    restart: on-failure
+    env_file: ./.env
+    ports:
+      - $BACKEND_LOCAL_PORT:$BACKEND_DOCKER_PORT
+    environment:
+      SPRING_APPLICATION_JSON: '{
+            "spring.data.mongodb.uri" : "mongodb://mancala-db:$MONGO_LOCAL_PORT",
+            "spring.data.mongodb.database" : "mancala_mongo"
+      }'
+    links:
+      - mancala-db
+
+volumes:
+  db:
+

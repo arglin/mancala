@@ -1,0 +1,91 @@
+.gameBoard {
+  height: auto;
+  width: 60vw;
+  min-height: 500px;
+  min-width: 800px;
+}
+
+.bigPit {
+  height: 40vh;
+  min-height: 500px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 7rem;
+}
+
+.myBigPit {
+  background-color: rgb(148, 251, 240);
+}
+
+.opponentBigPit {
+  background-color: rgb(255, 179, 168);
+}
+
+.smallPit {
+  height: 10vh;
+  min-height: 125px;
+}
+
+.smallPit div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+}
+
+.opponentPits div {
+  cursor: not-allowed;
+  background-color: rgb(255, 179, 168);
+}
+
+.myPits div {
+  cursor: pointer;
+  background-color: rgb(148, 251, 240);
+}
+
+.myPits div:hover {
+  transform: scale(1.1);
+  background-color: rgb(35, 205, 182);
+}
+
+.textBoard {
+  height: 20vh;
+  min-height: 250px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  opacity: 1;
+
+  animation: heartbeat 1s infinite alternate;
+}
+
+.textBoardFinished {
+  height: 20vh;
+  min-height: 250px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3.5rem;
+}
+
+.myName {
+  background-color: rgb(148, 251, 240);
+}
+
+.opponentName {
+  background-color: rgb(255, 179, 168);
+}
+
+/* Heart beat animation */
+@keyframes heartbeat {
+  to {
+    transform: scale(1.2);
+    opacity: 0.3;
+  }
+}
+

@@ -1,0 +1,60 @@
+<div class="container d-flex flex-column align-items-center">
+    <!-- spinner when waiting for opponent -->
+    <div *ngIf="isWaiting" class="spinner-border mb-5"><span><>>>>>></span></div>
+
+    <div class="row d-flex flex-column justify-content-center gameBoard">
+        <div class=" col-12 row d-flex justify-content-center">
+            <div class="col-3"></div>
+            <div *ngIf="!isWaiting && opponentName != null"
+                 class="opponentName col-6 d-flex justify-content-center row rounded-pill pb-3">
+                <h3 class=" text-center col-12 pt-2 m-0">{{opponentName}}</h3>
+                <div class="pb-1 pt-1 d-flex justify-content-between col-12">
+                    <span>{{opponentTotalMatch}}  Match(es)</span>
+                    <span>{{opponentWinMatch}}  Win(s)</span>
+                    <span>{{opponentTieMatch}}  Tie(s)</span>
+                </div>
+            </div>
+            <div class="col-3"></div>
+        </div>
+
+        <div class="row d-flex col-12 pe-0 ps-0 pt-2 pb-2">
+            <div class="col-2 p-0" title="opponent's score">
+                <div class="card bigPit opponentBigPit">
+                    {{opponentBigPit}}
+                </div>
+            </div>
+            <div class="col-8 d-flex flex-column">
+                <div class="row smallPit opponentPits d-flex flex-row-reverse">
+                    <div *ngFor="let opponentPit of opponentPits; index as i" class="card col-2"> {{opponentPit}}</div>
+                </div>
+                <div *ngIf=!isFinish class="textBoard">
+                    {{gameStatusText}}
+                </div>
+                <div *ngIf=isFinish class="textBoardFinished">
+                    {{gameStatusText}}
+                </div>
+
+                <div class="row smallPit myPits">
+                    <div *ngFor="let myPit of myPits; index as i" class="card col-2" (click)="sow(i)"> {{myPit}}</div>
+                </div>
+            </div>
+            <div class="col-2 p-0" title="my score">
+                <div class="card bigPit myBigPit">
+                    {{myBigPit}}
+                </div>
+            </div>
+        </div>
+        <div class=" col-12 row d-flex justify-content-center">
+            <div class="col-3"></div>
+            <div *ngIf="myName != null" class="myName d-flex justify-content-center pt-3 col-6 row rounded-pill">
+                <div class="d-flex justify-content-between col-12 pt-1 pb-1">
+                    <span>{{myTotalMatch}} Match(es)</span>
+                    <span>{{myWinMatch}} Win(s)</span>
+                    <span>{{myTieMatch}} Tie(s)</span>
+                </div>
+                <h3 class="text-center col-12">{{myName}}</h3>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+</div>

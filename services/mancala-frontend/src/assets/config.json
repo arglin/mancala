@@ -1,0 +1,6 @@
+{
+  "endpoint": "http://localhost:8080/game",
+  "gameInfoBroker": "/private/reply/gameInfo",
+  "sowDestPrefix": "/mancala/sow",
+  "joinDestPrefix": "/mancala/join"
+}
