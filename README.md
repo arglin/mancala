@@ -1,4 +1,4 @@
-# **[ My entrance code challenge of Bol.com ]**
+
 ___
 # Abstract
 1. This is a fullstack implementation of Game Mancala.
